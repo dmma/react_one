@@ -1,24 +1,18 @@
-import React from "react";
+import {useState} from 'react';
 
-class PartOne extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {name: 'Stepan', age: 25};
-        this.buttonHandler = this.buttonHandler.bind(this);
+export default function PartOne() {
+    const [name, setName] = useState('Stepan');
+    const [age, setAge] = useState(25);
+
+    function buttonHandler(e) {
+        setName('Mykola');
+        setAge(30);
     }
 
-    buttonHandler() {
-        this.setState({name: 'Mykola', age: 30})
-    }
-
-    render() {
-        return (
-            <div>
-                <p style={{fontWeight: 'bold'}}>First part</p>
-                <p>Name: {this.state.name}, age: {this.state.age}</p>
-                <button onClick={this.buttonHandler}>Click on me</button>
-            </div>);
-    }
+    return (
+        <div>
+            <p style={{fontWeight: 'bold'}}>First part</p>
+            <p>Name: {name}, age: {age}</p>
+            <button onClick={buttonHandler}>Click on me</button>
+        </div>);
 }
-
-export default PartOne;

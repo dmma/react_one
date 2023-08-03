@@ -6,8 +6,7 @@ import PartOne from "./PartOne";
 import PartTwo from "./PartTwo";
 import PartThree from "./PartThree";
 
-class App extends React.Component {
-    render() {
+export default function App() {
         return (
             <div>
                 <PartOne/>
@@ -15,7 +14,4 @@ class App extends React.Component {
                 <PartThree/>
             </div>
         );
-    }
 }
-
-export default App;

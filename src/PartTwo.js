@@ -1,30 +1,24 @@
-import React from "react";
+import {useState} from 'react';
 
-class PartTwo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {name: 'Stepan', age: 25, isToggleOn: true};
-        this.buttonHandler = this.buttonHandler.bind(this);
+export default function PartTwo() {
+
+    const [name, setName] = useState('Stepan');
+    const [age, setAge] = useState(25);
+    const [isToggleOn, setToggle] = useState(true);
+
+    function buttonHandler() {
+        setToggle(prevState => !prevState);
     }
 
-    buttonHandler() {
-        this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
-        }))
-    }
+    return (
+        <div>
+            <p style={{fontWeight: 'bold'}}>Second part</p>
+            {isToggleOn ? <p>Name: {name}, age: {age}</p> : null}
+            <button onClick={buttonHandler}>Click on me</button>
+        </div>
+    );
 
-    render() {
-        return (
-            <div>
-                <p style={{fontWeight: 'bold'}}>Second part</p>
-                {this.state.isToggleOn ? <p>Name: {this.state.name}, age: {this.state.age}</p> : null}
-                <button onClick={this.buttonHandler}>Click on me</button>
-            </div>
-        );
-    }
 }
-
-export default PartTwo;
 
 
 

@@ -1,33 +1,25 @@
-import React from "react";
+import {useState} from 'react';
 
-class PartThree extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {name: 'Stepan', age: 25, isToggleOn: false, buttonText: 'show'};
-        this.buttonHandler = this.buttonHandler.bind(this);
+export default function PartThree() {
+
+    const [name, setName] = useState('Stepan');
+    const [age, setAge] = useState(25);
+    const [isToggleOn, setToggle] = useState(true);
+    const [buttonText, setButtonText] = useState('show');
+
+    function buttonHandler() {
+        setToggle(prevState => !prevState);
+        setButtonText(isToggleOn ? 'show' : 'hide');
     }
 
-    buttonHandler() {
-        this.setState(prevState => (
-            {
-                isToggleOn: !prevState.isToggleOn,
-                buttonText: prevState.isToggleOn ?  'show' : 'hide'
-            }
-        ))
-    }
-
-    render() {
-        return (
-            <div>
-                <p style={{fontWeight: 'bold'}}>Third part</p>
-                {this.state.isToggleOn ? <p>Name: {this.state.name}, age: {this.state.age}</p> : null}
-                <button onClick={this.buttonHandler}>{this.state.buttonText}</button>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <p style={{fontWeight: 'bold'}}>Third part</p>
+            {isToggleOn ? <p>Name: {name}, age: {age}</p> : null}
+            <button onClick={buttonHandler}>{buttonText}</button>
+        </div>
+    );
 }
-
-export default PartThree;
 
 
 
